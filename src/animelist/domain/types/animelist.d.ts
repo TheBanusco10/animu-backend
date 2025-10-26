@@ -1,3 +1,5 @@
+import { APIResponse } from '@/shared/domain/types/api';
+
 export interface Animelist {
   data: Datum[];
   paging: Paging;
@@ -31,3 +33,5 @@ export interface MainPicture {
 export interface Paging {
   next: string;
 }
+
+export type AnimelistUpdateResponse = APIResponse<ListStatus>;
