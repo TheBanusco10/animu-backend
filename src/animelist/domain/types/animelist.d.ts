@@ -13,10 +13,9 @@ export interface Datum {
 export interface ListStatus {
   status: string;
   score: number;
-  num_watched_episodes?: number;
+  num_episodes_watched?: number;
   is_rewatching: boolean;
   updated_at: Date;
-  num_episodes_watched?: number;
 }
 
 export interface Node {
@@ -34,4 +33,12 @@ export interface Paging {
   next: string;
 }
 
-export type AnimelistUpdateResponse = APIResponse<ListStatus>;
+export interface ListStatusUpdate {
+  status: string;
+  score: number;
+  num_watched_episodes?: number;
+  is_rewatching: boolean;
+  updated_at: Date;
+}
+
+export type AnimelistUpdateResponse = APIResponse<ListStatusUpdate>;
