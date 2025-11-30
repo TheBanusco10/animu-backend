@@ -10,7 +10,7 @@ export default class GetAnimelistUseCase {
     private readonly animelistRepository: AnimelistInterface,
   ) {}
 
-  async execute() {
-    return await this.animelistRepository.getAnimelist();
+  async execute(offset?: number) {
+    return await this.animelistRepository.getAnimelist(offset);
   }
 }

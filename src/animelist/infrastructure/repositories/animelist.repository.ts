@@ -9,7 +9,7 @@ import { Injectable } from '@nestjs/common';
 import { firstValueFrom } from 'rxjs';
 
 const ANIMELIST_ENDPOINT =
-  'https://api.myanimelist.net/v2/users/@me/animelist?fields=list_status&limit=4';
+  'https://api.myanimelist.net/v2/users/@me/animelist?fields=list_status&limit=4&offset={offset}';
 
 const ANIMELIST_UPDATE_ENDPOINT =
   'https://api.myanimelist.net/v2/anime/{anime_id}/my_list_status';
@@ -18,9 +18,11 @@ const ANIMELIST_UPDATE_ENDPOINT =
 export default class AnimelistRepository implements AnimelistInterface {
   constructor(private readonly httpService: HttpService) {}
 
-  async getAnimelist(): Promise<Animelist> {
+  async getAnimelist(offset?: number): Promise<Animelist> {
     const { data } = await firstValueFrom(
-      this.httpService.get<Animelist>(ANIMELIST_ENDPOINT),
+      this.httpService.get<Animelist>(
+        ANIMELIST_ENDPOINT.replace('{offset}', offset?.toString() || '0'),
+      ),
     );
 
     return data;

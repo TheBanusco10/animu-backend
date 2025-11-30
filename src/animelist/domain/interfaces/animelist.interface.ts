@@ -4,6 +4,6 @@ import {
 } from '@/animelist/domain/types/animelist';
 
 export default interface AnimelistInterface {
-  getAnimelist(): Promise<Animelist>;
+  getAnimelist(offset?: number): Promise<Animelist>;
   updateAnimelist(animeId: string, data: any): Promise<AnimelistUpdateResponse>;
 }

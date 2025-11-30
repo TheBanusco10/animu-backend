@@ -30,7 +30,8 @@ export interface MainPicture {
 }
 
 export interface Paging {
-  next: string;
+  next?: string;
+  previous?: string;
 }
 
 export interface ListStatusUpdate {

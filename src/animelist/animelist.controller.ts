@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Query } from '@nestjs/common';
 import GetAnimelistUseCase from './application/useCases/getAnimelist.useCase';
 import UpdateAnimelistUseCase from './application/useCases/updateAnimelist.useCase';
 import type {
@@ -14,8 +14,8 @@ export class AnimelistController {
   ) {}
 
   @Get()
-  async getAnimelist() {
-    return await this.getAnimelistUserCase.execute();
+  async getAnimelist(@Query('offset') offset?: number) {
+    return await this.getAnimelistUserCase.execute(offset);
   }
 
   @Patch('/:animeId')
